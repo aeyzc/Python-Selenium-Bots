@@ -73,4 +73,4 @@ time.sleep(1)
 #button
 driver.find_element_by_xpath('''//*[@id="react-root"]/section/main/div/article/div/div[1]/div/div[5]/div[2]/button''').click()
 
-print("ACCOUNT CREATED!\n\nPsername:"+str(username)+"\nPassword:"+str(password))
+print("ACCOUNT CREATED!\n\nUsername:"+str(username)+"\nPassword:"+str(password))
