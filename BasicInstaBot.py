@@ -1,4 +1,4 @@
-#PLEASE CHECK LINE 34 AND LINE 35 BEFORE RUN IT
+#PLEASE CHECK LINE 43 AND LINE 44 BEFORE RUN IT
 
 from selenium import webdriver
 import time
@@ -15,11 +15,20 @@ class Insta:
         self.browser.get("https://instagram.com/accounts/login")
         time.sleep(3)
 
-        self.browser.find_element_by_xpath('''//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input''').send_keys(self.username)
-        self.browser.find_element_by_xpath('''//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input''').send_keys(self.password)
-        time.sleep(1)
-        self.browser.find_element_by_xpath('''//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input''').send_keys(Keys.ENTER)
-        time.sleep(3)
+        try:
+            self.browser.find_element_by_xpath('''//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input''').send_keys(self.username)
+            self.browser.find_element_by_xpath('''//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input''').send_keys(self.password)
+            time.sleep(1)
+            self.browser.find_element_by_xpath('''//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input''').send_keys(Keys.ENTER)
+            time.sleep(3)
+        #if browser go main page
+        except Exception:
+            self.browser.find_element_by_xpath('''//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[2]/div/label/input''').send_keys(self.username)
+            self.browser.find_element_by_xpath('''//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[3]/div/label/input''').send_keys(self.password)
+            time.sleep(1)
+            self.browser.find_element_by_xpath('''//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[3]/div/label/input''').send_keys(Keys.ENTER)
+            time.sleep(3)
+
 
     def followit(self,site):
         self.browser.get("https://www.instagram.com/"+site)
